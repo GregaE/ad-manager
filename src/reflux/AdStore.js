@@ -1,33 +1,42 @@
 import Reflux from "reflux";
-import ShopData from "../db-mock/shop_data"
-
-const adActions = Reflux.createActions(["createAd", "updateAd", "deleteAd"]);
+import AdActions from "./actions/AdActions";
 
 class AdStore extends Reflux.Store
 {
   constructor()
 	{
 		super();
-		this.state = { productList: ShopData.products };
-		this.listenTo(adActions.createAd, this.createAd);
-		this.listenTo(adActions.updateAd, this.updateAd);
-		this.listenTo(adActions.deleteAd, this.deleteAd);
+		this.state = { adList: [] };
+		this.listenTo(AdActions.createAd, this.createAd);
+		this.listenTo(AdActions.updateAd, this.updateAd);
+		this.listenTo(AdActions.deleteAd, this.deleteAd);
 	}
 
-	createAd(headline, description, image, productId)
+	createAd(header, description, image, productId)
 	{
-		const { productList } = this.state;
+		console.log("hello")
+		const { adList } = this.state;
 		const ad = {
 			// vaguely unique id for demo purposes only
 			id: Math.random().toString(16).slice(2),
-      headline: headline,
+      header: header,
       description: description,
-      image: image
+      image: image,
+			productId: productId
 		}
+		this.setState(...adList, ad)
 	};
-	updateAd(productId, adId)
+	updateAd(header, description, image, productId)
 	{
-		const { productList } = this.state;
+		const { adList } = this.state;
+		const ad = {
+			// vaguely unique id for demo purposes only
+			id: Math.random().toString(16).slice(2),
+      header: header,
+      description: description,
+      image: image,
+			productId: productId
+		}
 	};
 	deleteAd(productId, adId)
 	{
