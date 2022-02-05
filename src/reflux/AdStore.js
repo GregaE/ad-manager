@@ -24,7 +24,7 @@ class AdStore extends Reflux.Store
       image: image,
 			productId: productId
 		}
-		this.setState(...adList, ad)
+		this.setState({adList: [...adList, ad]})
 	};
 	updateAd(header, description, image, productId)
 	{

@@ -1,7 +1,14 @@
-function Ad() {
+function Ad( { id, header, image, description, productId } ) {
   return (
     <div className="Ad">
-      app
+      <div
+        className="item-image"
+        style={{ backgroundImage: `url(${image})` }}
+      />
+      <div>
+        <div>{header}</div>
+        <div>{description}</div>
+      </div>
     </div>
   );
 }

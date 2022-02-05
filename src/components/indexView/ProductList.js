@@ -7,6 +7,7 @@ function ProductList() {
     return arr.map(product =>
       <Product
         key={product.id}
+        productId={product.id}
         name={product.productName}
         image={product.productImage}
         description={product.productDescription}
