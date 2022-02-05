@@ -2,10 +2,6 @@
   height: 100%;
 }
 
-.App::before {
-  background-color: var(--black);
-}
-
 .dashboard {
   height: 100%;
 }
@@ -21,7 +17,7 @@
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
-  opacity: 0.9;
+  opacity: 0.8;
   filter: grayscale(100%);
   z-index: -1;
 }
