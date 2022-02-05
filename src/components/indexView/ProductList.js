@@ -1,5 +1,6 @@
 import Product from "./Product";
-import ShopData from "../../db-mock/shop_data"
+import ShopData from "../../db-mock/shop_data";
+import './../../styles/indexView.css'
 
 function ProductList() {
 

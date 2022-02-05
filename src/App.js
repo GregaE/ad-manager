@@ -1,4 +1,5 @@
 import Reflux from "reflux";
+import './styles/App.css';
 import NavBar from "./components/navView/NavBar";
 import { Routes, Route } from "react-router-dom";
 import { Outlet } from 'react-router';
@@ -27,7 +28,7 @@ class App extends Reflux.Component
       return (
         <div className="App">
           <NavBar/>
-          <div className="Dashboard">
+          <div className="dashboard">
             <Routes>
               <Route path="/" exact element={<ProductList/>} />
               <Route

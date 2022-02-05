@@ -1,0 +1,13 @@
+.NavBar {
+  width: 100%;
+  position: fixed;
+  background-color: var(--main-bg-color);
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  height: 8rem;
+}
