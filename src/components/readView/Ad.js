@@ -30,9 +30,13 @@ function Ad( { id, header, image, description, productId } ) {
         </div>
       </div>
       <div className="fb-actions">
-        <button class='like'>Like</button>
-        <button class='comment'>Comment</button>
-        <button class='share'>Share</button>
+        <button className='like'>Like</button>
+        <button className='comment'>Comment</button>
+        <button className='share'>Share</button>
+      </div>
+      <div className="btn-container">
+        <button>Update</button>
+        <button>Delete</button>
       </div>
     </div>
   );

@@ -7,11 +7,10 @@ class AdStore extends Reflux.Store
 	{
 		super();
 		this.state = { adList: [{
-			// vaguely unique id for demo purposes only
-			id: Math.random().toString(16).slice(2),
+			id: 'b6b7e801640c6',
       header: "Don't miss out!",
       description: "This is a great offer, super amazing offer that you've never seen before",
-      image: "https://media.istockphoto.com/photos/bled-island-picture-id143921515?k=20&m=143921515&s=612x612&w=0&h=78iGd8BaZwiJQS9xAwPsLnzE_wlkvNVamnEOqPxxop4=",
+      image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
 			productId: "5fa1c587ae2ac23e9c46510g"
 		}] };
 		this.listenTo(AdActions.createAd, this.createAd);
@@ -21,7 +20,6 @@ class AdStore extends Reflux.Store
 
 	createAd(header, description, image, productId)
 	{
-		console.log("hello")
 		const { adList } = this.state;
 		const ad = {
 			// vaguely unique id for demo purposes only
@@ -33,21 +31,34 @@ class AdStore extends Reflux.Store
 		}
 		this.setState({adList: [...adList, ad]})
 	};
-	updateAd(header, description, image, productId)
+	updateAd(adId, header, description, image, productId)
 	{
 		const { adList } = this.state;
-		const ad = {
+		const updatedAd = {
 			// vaguely unique id for demo purposes only
-			id: Math.random().toString(16).slice(2),
+			id: adId,
       header: header,
       description: description,
       image: image,
 			productId: productId
 		}
+		const updatedList = adList.map(function(ad) {
+			if (ad.id === adId) {
+				console.log('hello')
+				return updatedAd
+			}
+			else {
+				console.log(ad.id, adId)
+				return ad
+			}
+		})
+		this.setState({ adList: updatedList })
 	};
-	deleteAd(productId, adId)
+	deleteAd(adId)
 	{
-		const { productList } = this.state;
+		const { adList } = this.state;
+		const filteredList = adList.filter(ad => !ad.id === adId);
+		this.setState({ adList: filteredList })
 	};
 }
 
