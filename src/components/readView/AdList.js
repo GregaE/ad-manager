@@ -2,8 +2,12 @@ import { useParams } from "react-router-dom";
 import "./../../styles/readView.css"
 import AdActions from "./../../reflux/actions/AdActions";
 import Ad from "./Ad";
+import { useNavigate } from "react-router-dom";
+
 
 function AdList({ adList }) {
+
+  const navigate = useNavigate();
 
   const { productId } = useParams();
 
@@ -21,6 +25,7 @@ function AdList({ adList }) {
 
   return (
     <div className="AdList">
+      <button onClick={() => navigate("/",{ state: "Item deleted" })}>Home</button>
       {renderAds(adList)}
     </div>
   );

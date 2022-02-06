@@ -1,0 +1,19 @@
+import { motion } from "framer-motion"
+import './../../styles/index.css';
+
+function SuccessModal({ content }) {
+  return (
+    <motion.div
+      className="SuccessModal"
+      initial={{ opacity: 1, y: -100 }}
+      animate={{ y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ type: "tween" }}
+    >
+      <img src="/assets/success-svg.svg" alt="success-tick"/>
+      {content}
+    </motion.div>
+  );
+}
+
+export default SuccessModal;
