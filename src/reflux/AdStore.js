@@ -49,11 +49,9 @@ class AdStore extends Reflux.Store
 		}
 		const updatedList = adList.map(function(ad) {
 			if (ad.id === adId) {
-				console.log('hello')
 				return updatedAd
 			}
 			else {
-				console.log(ad.id, adId)
 				return ad
 			}
 		})

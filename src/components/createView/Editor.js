@@ -1,11 +1,13 @@
 import Ad from "../readView/Ad";
 import "./../../styles/createView.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { storage } from "../utils/firebaseConfig";
 import AdActions from "../../reflux/actions/AdActions";
 
-function Editor() {
+function Editor( { adList, selectedAd } ) {
+
+  console.log(selectedAd)
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,24 +20,24 @@ function Editor() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!header) {
-      alert("Please choose a headline for your add")
-    }
-    else if (!description) {
-      alert("Please choose a description for your add")
-    }
-    else if (!image) {
-      alert("Please choose a description for your add")
+    if (location.pathname.includes('create')) {
+      if (!header) {
+        alert("Please choose a headline for your add")
+      }
+      else if (!description) {
+        alert("Please choose a description for your add")
+      }
+      else if (!image) {
+        alert("Please choose a description for your add")
+      }
+      else {
+        AdActions.createAd(header, description, image, productId)
+      }
     }
     else if (location.pathname.includes('edit')) {
       console.log('edit')
-      AdActions.createAd(header, description, image, productId)
+      AdActions.updateAd(selectedAd, header, description, image, productId)
     }
-    else if (location.pathname.includes('create')) {
-      console.log('create')
-      AdActions.createAd(header, description, image, productId)
-    }
-
     navigate(`/adList/${productId}`)
   }
 
@@ -63,6 +65,16 @@ function Editor() {
       );
     }
   }
+
+  useEffect(() => {
+    if ((location.pathname.includes('edit'))) {
+      const currentAd = adList.find(ad => ad.id === selectedAd);
+      console.log(currentAd)
+      setHeader(currentAd.header);
+      setDescription(currentAd.description);
+      setImage(currentAd.image)
+    }
+  },[location.pathname, adList, selectedAd, setHeader, setDescription, setImage ])
 
   return (
     <div className="Editor">
