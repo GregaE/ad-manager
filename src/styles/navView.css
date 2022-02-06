@@ -1,7 +1,7 @@
 .NavBar {
   width: 100%;
   position: fixed;
-  background-color: var(--main-bg-color);
+  background-color: var(--action);
   height: 9rem;
   display: flex;
   align-items: center;

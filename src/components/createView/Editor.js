@@ -78,25 +78,37 @@ function Editor( { adList, selectedAd } ) {
 
   return (
     <div className="Editor">
+      <form id="adForm" onSubmit={handleSubmit}>
+        <h1>Update Ad</h1>
+        <div>
+          <label for="ad-image">Image</label>
+          <input
+            type="file"
+            accept="image/gif, image/png, image/jpeg, image/jpg"
+            name="ad-image"
+            onChange={(e) => handleImageUpload(e)}
+          />
+        </div>
+        <div>
+          <label for="ad-header">Heading</label>
+          <input name="ad-header" onChange={(e) => setHeader(e.target.value)}/>
+        </div>
+        <div>
+        <label for="ad-description">Description</label>
+          <textarea name="ad-description" onChange={(e) => setDescription(e.target.value)}/>
+        </div>
+        <div class="submit-btn">
+          <button type="submit" form="adForm">Submit</button>
+        </div>
+      </form>
       <div className="ad-preview">
-        <h1>Preview</h1>
+        <h1>Ad Preview</h1>
         <Ad
           header={header}
           description={description}
           image={image}
         />
       </div>
-      <form id="adForm" onSubmit={handleSubmit}>
-        <input
-          type="file"
-          accept="image/gif, image/png, image/jpeg, image/jpg"
-          name="ad-image"
-          onChange={(e) => handleImageUpload(e)}
-        />
-        <input name="ad-header" onChange={(e) => setHeader(e.target.value)}/>
-        <textarea name="ad-description" onChange={(e) => setDescription(e.target.value)}/>
-        <button type="submit" form="adForm">Submit</button>
-      </form>
     </div>
   );
 }
