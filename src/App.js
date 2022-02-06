@@ -24,8 +24,7 @@ class App extends Reflux.Component
 
   render()
   {
-    const { adList } = this.state;
-    console.log(this.state)
+    const { adList, selectedAd } = this.state;
 
     return (
       <div className="App">
@@ -42,7 +41,7 @@ class App extends Reflux.Component
               exact element={ <CreateAd adList={adList} /> }
             />
             <Route
-              path="/ad/edit/:adId"
+              path="/ad/edit/:productId"
               exact element={ <UpdateAd adList={adList} /> }
             />
           </Routes>
@@ -51,7 +50,7 @@ class App extends Reflux.Component
         <AnimatePresence>
         {this.state.deleteModal &&
           <WarningModal
-            content={"The ad has been deleted successfully"}
+            selectedAd={ selectedAd }
           />}
       </AnimatePresence>
       </div>

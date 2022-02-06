@@ -14,12 +14,14 @@ class AdStore extends Reflux.Store
 				image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
 				productId: "5fa1c587ae2ac23e9c46510g"
 			}],
-			deleteModal: false
+			deleteModal: false,
+			selectedAd: ''
 		};
 		this.listenTo(AdActions.createAd, this.createAd);
 		this.listenTo(AdActions.updateAd, this.updateAd);
 		this.listenTo(AdActions.deleteAd, this.deleteAd);
 		this.listenTo(AdActions.toggleDeleteModal, this.toggleDeleteModal);
+		this.listenTo(AdActions.setSelectedAd, this.setSelectedAd);
 	}
 
 	createAd(header, description, image, productId)
@@ -68,6 +70,10 @@ class AdStore extends Reflux.Store
 		const { deleteModal } = this.state;
 		const toggledState = !deleteModal;
 		this.setState({ deleteModal: toggledState })
+	};
+	setSelectedAd(adId)
+	{
+		this.setState({ selectedAd: adId })
 	};
 }
 
