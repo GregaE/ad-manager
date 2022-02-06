@@ -6,16 +6,20 @@ class AdStore extends Reflux.Store
   constructor()
 	{
 		super();
-		this.state = { adList: [{
-			id: 'b6b7e801640c6',
-      header: "Don't miss out!",
-      description: "This is a great offer, super amazing offer that you've never seen before",
-      image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
-			productId: "5fa1c587ae2ac23e9c46510g"
-		}] };
+		this.state = {
+			adList: [{
+				id: 'b6b7e801640c6',
+				header: "Don't miss out!",
+				description: "This is a great offer, super amazing offer that you've never seen before",
+				image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
+				productId: "5fa1c587ae2ac23e9c46510g"
+			}],
+			deleteModal: false
+		};
 		this.listenTo(AdActions.createAd, this.createAd);
 		this.listenTo(AdActions.updateAd, this.updateAd);
 		this.listenTo(AdActions.deleteAd, this.deleteAd);
+		this.listenTo(AdActions.toggleDeleteModal, this.toggleDeleteModal);
 	}
 
 	createAd(header, description, image, productId)
@@ -35,7 +39,6 @@ class AdStore extends Reflux.Store
 	{
 		const { adList } = this.state;
 		const updatedAd = {
-			// vaguely unique id for demo purposes only
 			id: adId,
       header: header,
       description: description,
@@ -59,6 +62,12 @@ class AdStore extends Reflux.Store
 		const { adList } = this.state;
 		const filteredList = adList.filter(ad => !ad.id === adId);
 		this.setState({ adList: filteredList })
+	};
+	toggleDeleteModal()
+	{
+		const { deleteModal } = this.state;
+		const toggledState = !deleteModal;
+		this.setState({ deleteModal: toggledState })
 	};
 }
 
