@@ -3,6 +3,7 @@ import "./../../styles/createView.css";
 import { useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { storage } from "../utils/firebaseConfig";
+import AdActions from "../../reflux/actions/AdActions";
 
 function Editor() {
 
@@ -10,9 +11,33 @@ function Editor() {
   const navigate = useNavigate();
   const { productId } = useParams();
 
-  const [header, setHeader] = useState(false);
-  const [description, setDescription] = useState(false);
-  const [image, setImage] = useState(false);
+  const [header, setHeader] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [image, setImage] = useState(null);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!header) {
+      alert("Please choose a headline for your add")
+    }
+    else if (!description) {
+      alert("Please choose a description for your add")
+    }
+    else if (!image) {
+      alert("Please choose a description for your add")
+    }
+    else if (location.pathname.includes('edit')) {
+      console.log('edit')
+      AdActions.createAd(header, description, image, productId)
+    }
+    else if (location.pathname.includes('create')) {
+      console.log('create')
+      AdActions.createAd(header, description, image, productId)
+    }
+
+    navigate(`/adList/${productId}`)
+  }
 
   const handleImageUpload = (e) => {
     const target = e.target;
@@ -37,20 +62,6 @@ function Editor() {
         }
       );
     }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (location.pathname.includes('edit')) {
-      console.log('edit')
-
-    }
-    else if (location.pathname.includes('create')) {
-      console.log('create')
-    }
-
-    // navigate back to adlist
   }
 
   return (
