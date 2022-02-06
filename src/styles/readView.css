@@ -202,9 +202,6 @@
 }
 
 .Ad .btn-container:hover {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 1;
-}
-
-.Ad .btn-container button {
 }

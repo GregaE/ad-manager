@@ -18,20 +18,11 @@ function WarningModal({ selectedAd }) {
       <div
         className="warning-modal"
       >
-        <div>
           <div className="icon-box">
             <i className="material-icons">&#xE5CD;</i>
           </div>
-          <h4 className="modal-title">Are you sure?</h4>
-          <button type="button" className="close" data-dismiss="modal" aria-hidden="true"
-            onClick={() => AdActions.toggleDeleteModal()}
-          >
-            &times;
-          </button>
-        </div>
-        <div className="modal-body">
-          <p>Do you really want to delete your the ad? This process cannot be undone.</p>
-        </div>
+          <h2>Are you sure?</h2>
+          <p>Do you really want to delete your the ad?<br></br>This process cannot be undone.</p>
         <div className="btn-container">
           <button
             type="button"
@@ -41,7 +32,7 @@ function WarningModal({ selectedAd }) {
           </button>
           <button
             type="button"
-            className="danger"
+            className="btn-danger"
             onClick={ function() {
               AdActions.deleteAd();
               navigate("/",{ state: "Item deleted" })

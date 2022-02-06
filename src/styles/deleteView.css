@@ -24,19 +24,41 @@
 
 .warning-modal {
 	background-color: var(--white);
-	width: 35rem;
-	height: 7rem;
+	width: 40rem;
+	height: 37rem;
 	display: flex;
+  flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+  text-align: center;
 	border-radius: 2px;
   z-index: 1000;
 }
 
-.warning-modal img {
-	width: 4rem;
-	height: 4rem;
+.warning-modal .icon-box {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  z-index: 9;
+  text-align: center;
+  border: 0.3rem solid var(--danger);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.warning-modal .icon-box i {
+  color: var(--danger);
+  font-size: 4.6rem;
+  display: inline-block;
+}
+
+.warning-modal .btn-container {
+  display: flex;
+  gap: 2rem;
+}
+
 
 .danger {
   background-color: var(--danger);

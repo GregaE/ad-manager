@@ -50,7 +50,7 @@ class App extends Reflux.Component
         <AnimatePresence>
         {this.state.deleteModal &&
           <WarningModal
-            selectedAd={ selectedAd }
+            selectedAd={selectedAd}
           />}
       </AnimatePresence>
       </div>

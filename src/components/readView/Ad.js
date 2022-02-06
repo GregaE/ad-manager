@@ -40,9 +40,10 @@ function Ad( { id, header, image, description, productId } ) {
       <div className="btn-container">
         <button>Update</button>
         <button
+          className="btn-danger"
           onClick={ function() {
-            AdActions.setSelectedAd(id)
-            AdActions.toggleDeleteModal()
+              AdActions.setSelectedAd(id)
+              AdActions.toggleDeleteModal()
             }
           }
         >
