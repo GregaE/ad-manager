@@ -1,4 +1,12 @@
+import AdActions from "./../../reflux/actions/AdActions"
+
 function Ad( { id, header, image, description, productId } ) {
+
+  function handleDelete() {
+    console.log('hello')
+    return
+  }
+
   return (
     <div className="Ad">
       <header>
@@ -36,7 +44,7 @@ function Ad( { id, header, image, description, productId } ) {
       </div>
       <div className="btn-container">
         <button>Update</button>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
