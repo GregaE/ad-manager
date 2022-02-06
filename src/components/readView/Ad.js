@@ -1,13 +1,38 @@
 function Ad( { id, header, image, description, productId } ) {
   return (
     <div className="Ad">
+      <header>
+        <div>
+          <div>
+            <img src="https://admockups.com/images/facebook.png" alt='fb-logo'/>
+          </div>
+          <div className="text-top">
+            <p>SportingGoods.com</p>
+            <p>Sponsored</p>
+          </div>
+        </div>
+        <div className="text-bottom">
+          {header}
+        </div>
+      </header>
       <div
-        className="item-image"
+        className="ad-image"
         style={{ backgroundImage: `url(${image})` }}
       />
-      <div>
-        <div>{header}</div>
-        <div>{description}</div>
+      <div className="fb-cta">
+        <div className="headline">
+          <div>SportingGoods.com</div>
+          <div>{header}</div>
+          <div>{description}</div>
+        </div>
+        <div>
+          <button>BUY NOW</button>
+        </div>
+      </div>
+      <div className="fb-actions">
+        <button>Like</button>
+        <button>Comment</button>
+        <button>Share</button>
       </div>
     </div>
   );

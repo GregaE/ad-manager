@@ -1,0 +1,157 @@
+.AdList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.Ad {
+  background-color: var(--white);
+  height: auto;
+  width: 32rem;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.Ad div, .Ad p {
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+.Ad header {
+  padding: 1.2rem 1.2rem 0.6rem;
+}
+
+.Ad header > :first-child {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Ad header img {
+  height: 3.8rem;
+  width: 3.8rem;
+  border-radius: 100%;
+}
+
+.Ad header .text-top {
+  padding-bottom: 0.8rem;
+}
+
+.Ad header .text-top > :first-child {
+  color: #1d2129;
+  font-weight: 700;
+  line-height: 1.7rem;
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.Ad header .text-top > :last-child {
+  color: #999;
+  font-stretch: 100%;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6rem;
+}
+
+.Ad header .text-bottom {
+  margin: 0.6rem 0 0.9rem 0;
+}
+
+.ad-image {
+  height: 17rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fb-cta {
+  background-color: #f0f2f5;
+  padding: 1.2rem 1.2rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 8rem;
+}
+
+.fb-cta .headline {
+  flex: 2;
+  padding-right: 0.5rem;
+}
+
+.fb-cta .headline div {
+  padding: 0.2rem 0 0.2rem 0;
+}
+
+.fb-cta .headline > :first-child {
+  color: #65676b;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.6rem;
+  margin: -4px 0 -3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.fb-cta .headline > :nth-child(2) {
+  color: #1c2028;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+  margin: 0;
+}
+
+.fb-cta .headline > :last-child {
+  color: #464950;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+  max-height: 100%;
+}
+
+.fb-cta button {
+  align-items: flex-start;
+  -webkit-appearance: none;
+  background: none;
+  background-color: transparent;
+  border: 1px solid #444950;
+  border-radius: 4px;
+  color: #444950;
+  display: inline-block;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  height: 24px;
+  letter-spacing: normal;
+  line-height: 16px;
+  margin: 0;
+  padding: 3px 8px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fb-actions {
+  border-top: 1px solid #ced0d4;
+  margin: 20px 10px 0;
+  display: flex;
+  padding: 0.4rem;
+}
+
+.fb-actions button {
+  align-items: center;
+  display: flex;
+  flex: 1 100%;
+  font-weight: 700;
+  height: 32px;
+  justify-content: center;
+  padding: 0 2px;
+  background-color: transparent;
+  border-style: none;
+}
