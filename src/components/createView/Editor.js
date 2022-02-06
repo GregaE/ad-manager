@@ -1,12 +1,38 @@
 import Ad from "../readView/Ad";
 import "./../../styles/createView.css";
 import { useState } from "react";
+import { storage } from "../utils/firebaseConfig";
 
 function Editor() {
 
   const [header, setHeader] = useState(false);
   const [description, setDescription] = useState(false);
   const [image, setImage] = useState(false);
+
+  const handleImage = (e) => {
+    const target = e.target;
+    const chosenImage = target.files[0];
+
+    if (chosenImage) {
+      const uploadTask = storage.ref(`images/${chosenImage.name}`).put(chosenImage);
+      uploadTask.on(
+        "state_changed",
+        snapshot => {},
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(chosenImage.name)
+            .getDownloadURL()
+            .then((url) => {
+              setImage(url);
+            });
+        }
+      );
+    }
+  }
 
   return (
     <div className="Editor">
@@ -19,30 +45,16 @@ function Editor() {
         />
       </div>
       <form>
-      <div className="pictures-container">
-        <div>
-          <progress value={progress} max="100" />
-        </div>
-        <div id="fb-picture">
-          <input
-            type="file"
-            name="picture"
-            onChange={(e) => dispatch(setImage(e))}
-          />
-        </div>
-        <div>
-          <img
-            className="pet-picture"
-            src={url || "https://www.turnkeytec.com/wp-content/uploads/2020/07/placeholder-image-400x300.jpg"}
-            alt="firebase-pic"
-          />
-        </div>
-        <button className="pictures-button" onClick={(e) => handleUpload(e)}>
-          Upload Picture
-        </button>
-      </div>
+        <input
+          type="file"
+          accept="image/gif, image/png, image/jpeg, image/jpg"
+          id="profileImgUpload"
+          className="h-full w-full rounded-full opacity-0 cursor-pointer"
+          name="image"
+          onChange={(e) => handleImage(e)}
+        />
         <input onChange={(e) => setHeader(e.target.value)}></input>
-        <input onChange={(e) => setHeader(e.target.value)}></input>
+        <input onChange={(e) => setDescription(e.target.value)}></input>
       </form>
     </div>
   );
