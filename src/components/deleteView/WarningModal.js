@@ -22,7 +22,7 @@ function WarningModal({ selectedAd }) {
             <i className="material-icons">&#xE5CD;</i>
           </div>
           <h2>Are you sure?</h2>
-          <p>Do you really want to delete your the ad?<br></br>This process cannot be undone.</p>
+          <p>Do you really want to delete this ad?<br></br>This process cannot be undone.</p>
         <div className="btn-container">
           <button
             type="button"

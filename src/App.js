@@ -10,8 +10,7 @@ import AdStore from "./reflux/AdStore";
 import ProductList from "./components/indexView/ProductList";
 import AdList from "./components/readView/AdList";
 import WarningModal from "./components/deleteView/WarningModal";
-import CreateAd from "./components/createView/CreateAd";
-import UpdateAd from "./components/updateView/UpdateAd";
+import Editor from "./components/createView/Editor";
 
 class App extends Reflux.Component
 {
@@ -37,12 +36,8 @@ class App extends Reflux.Component
               exact element={ <AdList adList={adList} /> }
             />
             <Route
-              path="/ad/create/:productId"
-              exact element={ <CreateAd adList={adList} /> }
-            />
-            <Route
               path="/ad/edit/:productId"
-              exact element={ <UpdateAd adList={adList} /> }
+              exact element={ <Editor adList={adList} /> }
             />
           </Routes>
           <Outlet></Outlet>

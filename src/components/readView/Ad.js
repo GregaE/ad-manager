@@ -1,6 +1,9 @@
-import AdActions from "./../../reflux/actions/AdActions"
+import AdActions from "./../../reflux/actions/AdActions";
+import { useNavigate } from "react-router-dom";
 
 function Ad( { id, header, image, description, productId } ) {
+
+  const navigate = useNavigate();
 
   return (
     <div className="Ad">
@@ -38,7 +41,15 @@ function Ad( { id, header, image, description, productId } ) {
         <button className='share'>Share</button>
       </div>
       <div className="btn-container">
-        <button>Update</button>
+        <button
+          onClick={ function() {
+              AdActions.setSelectedAd(id)
+              navigate(`/ad/edit/${productId}`)
+            }
+          }
+        >
+          Update
+        </button>
         <button
           className="btn-danger"
           onClick={ function() {
