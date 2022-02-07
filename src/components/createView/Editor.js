@@ -5,8 +5,7 @@ import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { storage } from "../utils/firebaseConfig";
 import AdActions from "../../reflux/actions/AdActions";
 
-function Editor( { adList, selectedAd } ) {
-
+function Editor({ adList, selectedAd }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -18,24 +17,20 @@ function Editor( { adList, selectedAd } ) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (location.pathname.includes('create')) {
+    if (location.pathname.includes("create")) {
       if (!header) {
-        alert("Please choose a headline for your add")
-      }
-      else if (!description) {
-        alert("Please choose a description for your add")
-      }
-      else if (!image) {
-        alert("Please choose an image for your add")
-      }
-      else {
+        alert("Please choose a headline for your add");
+      } else if (!description) {
+        alert("Please choose a description for your add");
+      } else if (!image) {
+        alert("Please choose an image for your add");
+      } else {
         AdActions.createAd(header, description, image, productId);
-        navigate(`/adList/${productId}`)
+        navigate(`/adList/${productId}`);
       }
-    }
-    else if (location.pathname.includes('edit')) {
+    } else if (location.pathname.includes("edit")) {
       AdActions.updateAd(selectedAd, header, description, image, productId);
-      navigate(`/adList/${productId}`)
+      navigate(`/adList/${productId}`);
     }
   }
 
@@ -44,10 +39,12 @@ function Editor( { adList, selectedAd } ) {
     const chosenImage = target.files[0];
 
     if (chosenImage) {
-      const uploadTask = storage.ref(`images/${chosenImage.name}`).put(chosenImage);
+      const uploadTask = storage
+        .ref(`images/${chosenImage.name}`)
+        .put(chosenImage);
       uploadTask.on(
         "state_changed",
-        snapshot => {},
+        (snapshot) => {},
         (error) => {
           console.log(error);
         },
@@ -62,16 +59,23 @@ function Editor( { adList, selectedAd } ) {
         }
       );
     }
-  }
+  };
 
   useEffect(() => {
-    if ((location.pathname.includes('edit'))) {
-      const currentAd = adList.find(ad => ad.id === selectedAd);
+    if (location.pathname.includes("edit")) {
+      const currentAd = adList.find((ad) => ad.id === selectedAd);
       setHeader(currentAd.header);
       setDescription(currentAd.description);
-      setImage(currentAd.image)
+      setImage(currentAd.image);
     }
-  },[location.pathname, adList, selectedAd, setHeader, setDescription, setImage ])
+  }, [
+    location.pathname,
+    adList,
+    selectedAd,
+    setHeader,
+    setDescription,
+    setImage,
+  ]);
 
   return (
     <div className="Editor">
@@ -88,23 +92,24 @@ function Editor( { adList, selectedAd } ) {
         </div>
         <div>
           <label htmlFor="ad-header">Heading</label>
-          <input name="ad-header" onChange={(e) => setHeader(e.target.value)}/>
+          <input name="ad-header" onChange={(e) => setHeader(e.target.value)} />
         </div>
         <div>
-        <label htmlFor="ad-description">Description</label>
-          <textarea name="ad-description" onChange={(e) => setDescription(e.target.value)}/>
+          <label htmlFor="ad-description">Description</label>
+          <textarea
+            name="ad-description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </div>
         <div className="submit-btn">
-          <button type="submit" form="adForm">Submit</button>
+          <button type="submit" form="adForm">
+            Submit
+          </button>
         </div>
       </form>
       <div className="ad-preview">
         <h1>Ad Preview</h1>
-        <Ad
-          header={header}
-          description={description}
-          image={image}
-        />
+        <Ad header={header} description={description} image={image} />
       </div>
     </div>
   );

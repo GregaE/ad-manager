@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 function Product({ productId, name, image, description, price }) {
   return (
     <div className="Product">
-      <Link to={{
-        state: { debug: 'debug'},
-        pathname: `/adList/${productId}`
-        }}>
+      <Link
+        to={{
+          state: { debug: "debug" },
+          pathname: `/adList/${productId}`,
+        }}
+      >
         <div
           className="product-image"
           style={{ backgroundImage: `url(${image})` }}

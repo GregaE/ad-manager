@@ -7,7 +7,7 @@
       "productName": "Good ol' Dumbbells",
       "productDescription": "This equipment helps you perform joint-isolation exercises such as biceps curls, chest flyes or shoulder raises. Using dumbbells for full-body, multiplanar movements, however, can provide a variety of different strength outcomes. It also offers many benefits for cardiorespiratory fitness and flexibility",
       "productImage": "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
-      "price": 14.50
+      "price": 14.5
     },
     {
       "id": "5fa1c587ae2ac23e9c46510g",
@@ -21,7 +21,7 @@
       "productName": "Durable Resistance band",
       "productDescription": "Rubbery, elastic bands that you can use to strengthen your muscles at home. Resistance training is any type of exercise that uses resistance or weight to build strength in your muscles. Working out with resistance bands is one option for resistance training that allows you to work out at home using just one piece of equipment.",
       "productImage": "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626332994/coding-challenge/resistance.jpg",
-      "price": 25.30
+      "price": 25.3
     }
   ]
 }
