@@ -6,6 +6,9 @@ Functionality:
 - Edit existing ads
 - Delete existing ads
 
+Note:
+Three ads are preloaded to the second product for demo purposes.
+
 ## Running the app
 
 1. Clone the repo
