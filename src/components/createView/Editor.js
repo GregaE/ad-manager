@@ -3,7 +3,9 @@ import "./../../styles/createView.css";
 import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { storage } from "../utils/firebaseConfig";
+import { motion } from "framer-motion";
 import AdActions from "../../reflux/actions/AdActions";
+
 
 function Editor({ adList, selectedAd }) {
   const location = useLocation();
@@ -78,40 +80,52 @@ function Editor({ adList, selectedAd }) {
   ]);
 
   return (
-    <div className="Editor">
-      <form id="adForm" onSubmit={handleSubmit}>
-        <h1>Update Ad</h1>
+    <motion.div
+      className="createView"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <div className="createActions">
+        <h1>Ad Creator</h1>
         <div>
-          <label htmlFor="ad-image">Image</label>
-          <input
-            type="file"
-            accept="image/gif, image/png, image/jpeg, image/jpg"
-            name="ad-image"
-            onChange={(e) => handleImageUpload(e)}
-          />
+          <button onClick={() => navigate("/")}>return home</button>
         </div>
-        <div>
-          <label htmlFor="ad-header">Heading</label>
-          <input name="ad-header" onChange={(e) => setHeader(e.target.value)} />
-        </div>
-        <div>
-          <label htmlFor="ad-description">Description</label>
-          <textarea
-            name="ad-description"
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="submit-btn">
-          <button type="submit" form="adForm">
-            Submit
-          </button>
-        </div>
-      </form>
-      <div className="ad-preview">
-        <h1>Ad Preview</h1>
-        <Ad header={header} description={description} image={image} />
       </div>
-    </div>
+      <div className="Editor">
+        <form id="adForm" onSubmit={handleSubmit}>
+          <h1>Update Ad</h1>
+          <div>
+            <label htmlFor="ad-image">Image</label>
+            <input
+              type="file"
+              accept="image/gif, image/png, image/jpeg, image/jpg"
+              name="ad-image"
+              onChange={(e) => handleImageUpload(e)}
+            />
+          </div>
+          <div>
+            <label htmlFor="ad-header">Heading</label>
+            <input name="ad-header" onChange={(e) => setHeader(e.target.value)} />
+          </div>
+          <div>
+            <label htmlFor="ad-description">Description</label>
+            <textarea
+              name="ad-description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="submit-btn">
+            <button type="submit" form="adForm">
+              Submit
+            </button>
+          </div>
+        </form>
+        <div className="ad-preview">
+          <h1>Ad Preview</h1>
+          <Ad header={header} description={description} image={image} />
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

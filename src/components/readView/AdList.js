@@ -9,9 +9,12 @@ function AdList({ adList }) {
   const { productId } = useParams();
 
   function renderAds(arr) {
-    return arr
-      .filter((ad) => ad.productId === productId)
-      .map((ad) => (
+    const filteredArr = arr.filter((ad) => ad.productId === productId)
+    if (filteredArr.length <= 0)  {
+      return <div class='no-ad-info'>No ads have yet been created for this product, click on 'Create new' to create an ad</div>
+    }
+    else {
+      return filteredArr.map((ad) => (
         <Ad
           key={ad.id}
           id={ad.id}
@@ -21,6 +24,7 @@ function AdList({ adList }) {
           productId={productId}
         />
       ));
+    }
   }
 
   return (
