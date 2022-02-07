@@ -28,6 +28,7 @@
 
 .readActions h1 {
   color: var(--action);
+  font-size: 3rem;
 }
 
 .readActions button {
