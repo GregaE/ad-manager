@@ -44,6 +44,23 @@
   }
 }
 
+@media only screen and (max-height: 700px) {
+  .primary-view {
+    padding: 10.5rem 1rem 2rem 1rem;
+    height: auto;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .primary-view {
+    background-color: var(--black);
+  }
+
+  .primary-view h1 {
+    color: var(--action);
+  }
+}
+
 .primary-actions  {
   height: 35%;
   display: flex;
