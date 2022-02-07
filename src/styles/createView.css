@@ -1,3 +1,7 @@
+.Editor {
+  flex-direction: row-reverse;
+}
+
 .ad-preview h1 {
   padding: 1rem 0;
 }
