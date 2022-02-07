@@ -104,6 +104,7 @@ button:active {
   align-items: center;
   justify-content: space-evenly;
   border-radius: 2px;
+  z-index: 3000;
 }
 
 .SuccessModal img {
