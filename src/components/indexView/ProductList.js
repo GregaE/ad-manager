@@ -1,8 +1,7 @@
 import "./../../styles/indexView.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import ShopData from "../../db-mock/shop_data";
 import Product from "./Product";
@@ -39,7 +38,7 @@ function ProductList() {
       className="primary-view index-view"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      transition={{ duration: 0.7 }}
     >
       <AnimatePresence>
         {successModal && (

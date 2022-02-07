@@ -28,11 +28,11 @@ function Editor({ adList, selectedAd }) {
         alert("Please choose an image for your add");
       } else {
         AdActions.createAd(header, description, image, productId);
-        navigate(`/adList/${productId}`);
+        navigate(`/adList/${productId}`, { state: "Item created" });
       }
     } else if (location.pathname.includes("edit")) {
       AdActions.updateAd(selectedAd, header, description, image, productId);
-      navigate(`/adList/${productId}`);
+      navigate(`/adList/${productId}`, { state: "Item updated" });
     }
   }
 
@@ -85,6 +85,7 @@ function Editor({ adList, selectedAd }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.7 }}
     >
       <div className="primary-actions create-actions">
         <h1>Ad Creator</h1>

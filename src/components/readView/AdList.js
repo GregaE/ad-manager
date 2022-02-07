@@ -1,12 +1,18 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "./../../styles/readView.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Ad from "./Ad";
+import SuccessModal from "../elements/SuccessModal";
+
 
 function AdList({ adList }) {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const { productId } = useParams();
+  const location = useLocation();
+  const [successModal, toggleSuccess] = useState(false);
+  const [successMessage, setMessage] = useState("");
 
   function renderAds(arr) {
     const filteredArr = arr.filter((ad) => ad.productId === productId)
@@ -27,13 +33,35 @@ function AdList({ adList }) {
     }
   }
 
+  useEffect(() => {
+    if (location.state === "Item updated") {
+      setMessage("updated")
+      toggleSuccess(true);
+      setTimeout(() => {
+        toggleSuccess(false);
+      }, 2500);
+    }
+    else if (location.state === "Item created") {
+      setMessage("created")
+      toggleSuccess(true);
+      setTimeout(() => {
+        toggleSuccess(false);
+      }, 2500);
+    }
+  }, [toggleSuccess, location.state, setMessage]);
+
   return (
     <motion.div
       className="primary-view read-view"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      transition={{ duration: 0.7 }}
     >
+      <AnimatePresence>
+        {successModal && (
+          <SuccessModal content={`The ad has been ${successMessage} successfully`} />
+        )}
+      </AnimatePresence>
       <div className="primary-actions read-actions">
         <h1>Select an ad to update or create a new one</h1>
         <div>
