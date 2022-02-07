@@ -28,8 +28,8 @@ function AdList({ adList }) {
   }
 
   return (
-    <div className="readView">
-      <div className="readActions">
+    <div className="primary-view read-view">
+      <div className="primary-actions read-actions">
         <h1>Select an ad to update or create a new one</h1>
         <div>
           <button onClick={() => navigate(`/ad/create/${productId}`)}>
@@ -38,7 +38,7 @@ function AdList({ adList }) {
           <button onClick={() => navigate("/")}>return home</button>
         </div>
       </div>
-      <div className="AdList">{renderAds(adList)}</div>
+      <div className="primary-content AdList">{renderAds(adList)}</div>
     </div>
   );
 }

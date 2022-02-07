@@ -34,16 +34,16 @@ function ProductList() {
   }, [toggleSuccess, location.state]);
 
   return (
-    <div className="indexView">
+    <div className="primary-view index-view">
       <AnimatePresence>
         {successModal && (
           <SuccessModal content={"The ad has been deleted successfully"} />
         )}
       </AnimatePresence>
-      <div className="indexActions">
+      <div className="primary-actions index-actions">
         <h1>Select a product to continue</h1>
       </div>
-      <div className="ProductList">
+      <div className="primary-content ProductList">
         {renderProducts(ShopData.products)}
       </div>
     </div>

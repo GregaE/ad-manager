@@ -81,17 +81,17 @@ function Editor({ adList, selectedAd }) {
 
   return (
     <motion.div
-      className="createView"
+      className="primary-view create-view"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <div className="createActions">
+      <div className="primary-actions create-actions">
         <h1>Ad Creator</h1>
         <div>
           <button onClick={() => navigate("/")}>return home</button>
         </div>
       </div>
-      <div className="Editor">
+      <div className="primary-content Editor">
         <form id="adForm" onSubmit={handleSubmit}>
           <h1>Update Ad</h1>
           <div>
