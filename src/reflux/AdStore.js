@@ -48,7 +48,6 @@ class AdStore extends Reflux.Store {
   }
   deleteAd(adId) {
     const { adList } = this.state;
-    console.log(adId, adList);
     const filteredList = adList.filter((ad) => !(ad.id === adId));
     this.setState({ adList: filteredList });
   }
