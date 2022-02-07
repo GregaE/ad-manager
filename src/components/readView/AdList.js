@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import "./../../styles/readView.css";
-import AdActions from "./../../reflux/actions/AdActions";
+import { motion } from "framer-motion";
 import Ad from "./Ad";
 
 function AdList({ adList }) {
@@ -28,7 +28,12 @@ function AdList({ adList }) {
   }
 
   return (
-    <div className="primary-view read-view">
+    <motion.div
+      className="primary-view read-view"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="primary-actions read-actions">
         <h1>Select an ad to update or create a new one</h1>
         <div>
@@ -39,7 +44,7 @@ function AdList({ adList }) {
         </div>
       </div>
       <div className="primary-content AdList">{renderAds(adList)}</div>
-    </div>
+    </motion.div>
   );
 }
 

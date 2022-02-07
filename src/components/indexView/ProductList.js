@@ -2,6 +2,7 @@ import "./../../styles/indexView.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import ShopData from "../../db-mock/shop_data";
 import Product from "./Product";
@@ -34,7 +35,12 @@ function ProductList() {
   }, [toggleSuccess, location.state]);
 
   return (
-    <div className="primary-view index-view">
+    <motion.div
+      className="primary-view index-view"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <AnimatePresence>
         {successModal && (
           <SuccessModal content={"The ad has been deleted successfully"} />
@@ -46,7 +52,7 @@ function ProductList() {
       <div className="primary-content ProductList">
         {renderProducts(ShopData.products)}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

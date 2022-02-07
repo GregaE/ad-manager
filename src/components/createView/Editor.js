@@ -84,6 +84,7 @@ function Editor({ adList, selectedAd }) {
       className="primary-view create-view"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <div className="primary-actions create-actions">
         <h1>Ad Creator</h1>

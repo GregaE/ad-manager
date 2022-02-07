@@ -26,24 +26,27 @@ class App extends Reflux.Component {
       <div className="App">
         <NavBar />
         <div className="dashboard">
-          <Routes>
-            <Route path="/" exact element={<ProductList />} />
-            <Route
-              path="/adList/:productId"
-              exact
-              element={<AdList adList={adList} />}
-            />
-            <Route
-              path="/ad/edit/:productId"
-              exact
-              element={<Editor adList={adList} selectedAd={selectedAd} />}
-            />
-            <Route
-              path="/ad/create/:productId"
-              exact
-              element={<Editor adList={adList} selectedAd={selectedAd} />}
-            />
-          </Routes>
+          <AnimatePresence exitBeforeEnter>
+            <Routes>
+
+                <Route path="/" exact element={<ProductList />} />
+                <Route
+                  path="/adList/:productId"
+                  exact
+                  element={<AdList adList={adList} />}
+                />
+                <Route
+                  path="/ad/edit/:productId"
+                  exact
+                  element={<Editor adList={adList} selectedAd={selectedAd} />}
+                />
+                <Route
+                  path="/ad/create/:productId"
+                  exact
+                  element={<Editor adList={adList} selectedAd={selectedAd} />}
+                />
+            </Routes>
+          </AnimatePresence>
           <Outlet></Outlet>
         </div>
         <AnimatePresence>
