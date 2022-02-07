@@ -39,6 +39,10 @@ class App extends Reflux.Component
               path="/ad/edit/:productId"
               exact element={ <Editor adList={adList} selectedAd={selectedAd} /> }
             />
+            <Route
+              path="/ad/create/:productId"
+              exact element={ <Editor adList={adList} selectedAd={selectedAd} /> }
+            />
           </Routes>
           <Outlet></Outlet>
         </div>

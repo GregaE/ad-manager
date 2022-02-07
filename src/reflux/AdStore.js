@@ -7,13 +7,7 @@ class AdStore extends Reflux.Store
 	{
 		super();
 		this.state = {
-			adList: [{
-				id: 'b6b7e801640c6',
-				header: "Don't miss out!",
-				description: "This is a great offer, super amazing offer that you've never seen before",
-				image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
-				productId: "5fa1c587ae2ac23e9c46510g"
-			}],
+			adList: [...adSamples],
 			deleteModal: false,
 			selectedAd: ''
 		};
@@ -60,7 +54,8 @@ class AdStore extends Reflux.Store
 	deleteAd(adId)
 	{
 		const { adList } = this.state;
-		const filteredList = adList.filter(ad => !ad.id === adId);
+		console.log(adId, adList)
+		const filteredList = adList.filter(ad => !(ad.id === adId));
 		this.setState({ adList: filteredList })
 	};
 	toggleDeleteModal()
@@ -76,3 +71,29 @@ class AdStore extends Reflux.Store
 }
 
 export default AdStore;
+
+// prefilling list of ads for demo purposes
+
+const adSamples = [
+	{
+		id: 'b6b7e801640c6',
+		header: "Don't miss out!",
+		description: "This is a great offer, super amazing offer that you've never seen before",
+		image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
+		productId: "5fa1c587ae2ac23e9c46510g"
+	},
+	{
+		id: 'b6b7e801640c7',
+		header: "Don't miss out!2",
+		description: "This is a great offer, super amazing offer that you've never seen before",
+		image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
+		productId: "5fa1c587ae2ac23e9c46510g"
+	},
+	{
+		id: 'b6b7e801640c8',
+		header: "Don't miss out!3",
+		description: "This is a great offer, super amazing offer that you've never seen before",
+		image: "https://res.cloudinary.com/dyiuxe5fa/image/upload/v1626282482/coding-challenge/wp3699391.jpg",
+		productId: "5fa1c587ae2ac23e9c46510g"
+	},
+]

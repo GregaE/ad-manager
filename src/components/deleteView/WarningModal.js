@@ -34,9 +34,9 @@ function WarningModal({ selectedAd }) {
             type="button"
             className="btn-danger"
             onClick={ function() {
-              AdActions.deleteAd();
+              AdActions.deleteAd(selectedAd);
               navigate("/",{ state: "Item deleted" })
-              AdActions.toggleDeleteModal(selectedAd)
+              AdActions.toggleDeleteModal()
             }
           }
           >

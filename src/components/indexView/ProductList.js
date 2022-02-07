@@ -12,8 +12,6 @@ function ProductList() {
   const location = useLocation();
   const [successModal, toggleSuccess] = useState(false);
 
-  console.log(location.state)
-
   function renderProducts(arr) {
     return arr.map(product =>
       <Product

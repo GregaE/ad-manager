@@ -23,9 +23,18 @@ function AdList({ adList }) {
   }
 
   return (
-    <div className="AdList">
-      <button onClick={() => navigate("/")}>Home</button>
-      {renderAds(adList)}
+    <div className="readView">
+      <div className="readActions">
+        <h1>Select an ad to update or create a new one</h1>
+        <div>
+          <button onClick={() => navigate(`/ad/create/${productId}`)}>Create new</button>
+          <button onClick={() => navigate("/")}>return home</button>
+        </div>
+      </div>
+      <div className="AdList">
+        {renderAds(adList)}
+      </div>
+
     </div>
   );
 }

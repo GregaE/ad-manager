@@ -7,8 +7,6 @@ import AdActions from "../../reflux/actions/AdActions";
 
 function Editor( { adList, selectedAd } ) {
 
-  console.log(selectedAd)
-
   const location = useLocation();
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -28,17 +26,17 @@ function Editor( { adList, selectedAd } ) {
         alert("Please choose a description for your add")
       }
       else if (!image) {
-        alert("Please choose a description for your add")
+        alert("Please choose an image for your add")
       }
       else {
-        AdActions.createAd(header, description, image, productId)
+        AdActions.createAd(header, description, image, productId);
+        navigate(`/adList/${productId}`)
       }
     }
     else if (location.pathname.includes('edit')) {
-      console.log('edit')
-      AdActions.updateAd(selectedAd, header, description, image, productId)
+      AdActions.updateAd(selectedAd, header, description, image, productId);
+      navigate(`/adList/${productId}`)
     }
-    navigate(`/adList/${productId}`)
   }
 
   const handleImageUpload = (e) => {
@@ -69,7 +67,6 @@ function Editor( { adList, selectedAd } ) {
   useEffect(() => {
     if ((location.pathname.includes('edit'))) {
       const currentAd = adList.find(ad => ad.id === selectedAd);
-      console.log(currentAd)
       setHeader(currentAd.header);
       setDescription(currentAd.description);
       setImage(currentAd.image)
@@ -81,7 +78,7 @@ function Editor( { adList, selectedAd } ) {
       <form id="adForm" onSubmit={handleSubmit}>
         <h1>Update Ad</h1>
         <div>
-          <label for="ad-image">Image</label>
+          <label htmlFor="ad-image">Image</label>
           <input
             type="file"
             accept="image/gif, image/png, image/jpeg, image/jpg"
@@ -90,14 +87,14 @@ function Editor( { adList, selectedAd } ) {
           />
         </div>
         <div>
-          <label for="ad-header">Heading</label>
+          <label htmlFor="ad-header">Heading</label>
           <input name="ad-header" onChange={(e) => setHeader(e.target.value)}/>
         </div>
         <div>
-        <label for="ad-description">Description</label>
+        <label htmlFor="ad-description">Description</label>
           <textarea name="ad-description" onChange={(e) => setDescription(e.target.value)}/>
         </div>
-        <div class="submit-btn">
+        <div className="submit-btn">
           <button type="submit" form="adForm">Submit</button>
         </div>
       </form>
