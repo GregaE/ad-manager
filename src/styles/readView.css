@@ -12,6 +12,7 @@
   z-index: 1;
   position: relative;
   cursor: pointer;
+  text-align: left;
 }
 
 .Ad div,
